@@ -6,13 +6,14 @@ import productRoutes from "./routes/product.route.js";
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 //middleWare
 app.use(express.json());
 
 app.use("/api/products", productRoutes);
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
   connectDB();
-  console.log("server is running on http://localhost:5000");
+  console.log(`server is running on http://localhost:${PORT}`);
 });
