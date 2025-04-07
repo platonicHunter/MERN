@@ -6,6 +6,10 @@ export const signup = async (req, res) => {
   try {
     const { fullName, userName, email, password } = req.body;
 
+    if (!userName || userName.trim() === "") {
+      return res.status(400).json({ message: "Username is required" });
+    }
+
     // Email validation regex
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!emailRegex.test(email)) {
